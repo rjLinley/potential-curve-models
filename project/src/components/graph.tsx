@@ -12,12 +12,17 @@ const Graph = () => {
   const EpsR = 78 // relative permittivity of water at 20 degrees C
   const NA = 6.02214076E23 //mol
   const [C00, setC00] = useState(0.1) //mol/L
+  const [stepC00, setStepC00] = useState(0.001);
   const C0 = C00*1000 //mol/m^3
   const Kinv = ((Eps0*EpsR*KB*T)/(e0**2*NA*2*C0))**(1/2)
   const K = Kinv**(-1)
 
 
-  const linspace = (start: number, stop: number, num:number, endpoint: Boolean = true):number[] => {
+  const [testValue, setTestValue] = useState(1);
+  const [testStep, setTestStep] = useState(0.01)
+
+
+  const linspace = (start: number, stop: number, num:number, endpoint: boolean = true):number[] => {
       const div = endpoint ? (num - 1) : num;
       const step = (stop - start) / div;
       return Array.from({length: num}, (_, i) => start + step * i);
@@ -29,7 +34,31 @@ const Graph = () => {
   const Psix = base.map((item) => (4*kB*T/z)*Math.atanh(Math.tanh(z*Psi0/(4*kB*T))*Math.exp((-1)*K*item))*1000)
 
   const x = base.map((item) => item * 1E9)
+
+  const handleSliderChange = (value: number) => {
+    // If value is between 2 & 6, set step value to be 0.0001, else set it to 0.01
+    if (value < 6 && value > 2 ) {
+      setTestStep(0.0001);
+    } else {
+      setTestStep(0.01);
+    }
+    setTestValue(value);
+  }
   
+  const handleC00Change = (value: number) => {
+    if (value < 0.080 && value > 0.000) {
+      setStepC00(0.0001)
+    } else {
+      setStepC00(0.001)
+    }
+
+    if (value < 0) {
+      setC00(0)
+    } else {
+      setC00(value)
+    }
+  }
+
   return (
     <div>
     <Plot
@@ -59,8 +88,10 @@ const Graph = () => {
     
           }}]} }
       />
-      <div>Psi0 = {Psi0}</div>
-      <div>C00 = {C00}</div>
+      <div className='variable-display'>
+        <div>Psi0 = {Psi0}</div>
+        <div>C00 = {C00}</div>
+      </div>
 
       <div>
         Set Psi0
@@ -72,8 +103,16 @@ const Graph = () => {
       <div>
         Set C00
         <br></br>
-      <input type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setC00(Number(event.target.value))} value={C00} step='0.001' min='0' max='0.5'></input> |  
-      <input type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setC00(Number(event.target.value))} value={C00} min='0' max='.750' step='0.001'></input>
+      <input className='variable-counter' type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => handleC00Change(Number(event.target.value))} value={C00} step={stepC00} min='0' max='0.5'></input> |  
+      <input className='variable-slider' type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => handleC00Change(Number(event.target.value))} value={C00} min='-0.25' max='.750' step={stepC00}></input>
+      {/*step={stepC00}  */}
+      </div>
+
+      <div>
+        Test Slider
+        <br></br>
+      <input type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => handleSliderChange(Number(event.target.value))} value={testValue} step={testStep} min='0' max='10'></input> |  
+      <input type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => handleSliderChange(Number(event.target.value))} value={testValue} min='0' max='10' step={testStep}></input>
       </div>
       
     </div>
