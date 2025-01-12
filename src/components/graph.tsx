@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState, useEffect } from 'react';
 import Plot from 'react-plotly.js';
 
 
@@ -18,6 +18,8 @@ const Graph = () => {
   const K = Kinv**(-1)
 
 
+  // width: 760, height: 480,
+
   const [testValue, setTestValue] = useState(1);
   const [testStep, setTestStep] = useState(0.01)
 
@@ -35,15 +37,15 @@ const Graph = () => {
 
   const x = base.map((item) => item * 1E9)
 
-  const handleSliderChange = (value: number) => {
-    // If value is between 2 & 6, set step value to be 0.0001, else set it to 0.01
-    if (value < 6 && value > 2 ) {
-      setTestStep(0.0001);
-    } else {
-      setTestStep(0.01);
-    }
-    setTestValue(value);
-  }
+  // const handleSliderChange = (value: number) => {
+  //   // If value is between 2 & 6, set step value to be 0.0001, else set it to 0.01
+  //   if (value < 6 && value > 2 ) {
+  //     setTestStep(0.0001);
+  //   } else {
+  //     setTestStep(0.01);
+  //   }
+  //   setTestValue(value);
+  // }
   
   const handleC00Change = (value: number) => {
     if (value < 0.080 && value > 0.000) {
@@ -59,9 +61,13 @@ const Graph = () => {
     }
   }
 
+  useEffect(() => {
+    document.title = 'Guoy Chapman Visualization';
+  })  
+
   return (
     <div>
-    <Plot
+    <div className='graph-container'><Plot className='graph'
         data={[
           {
             x: x,
@@ -72,7 +78,7 @@ const Graph = () => {
           },
           
         ]}
-        layout={ {width: 760, height: 480, title: 'Guoy Chapman',
+        layout={ {width: screen.width * .50, height: screen.height * .50, title: 'Guoy Chapman',
          xaxis: {range: [-1, 12], rangemode: "normal", title: {text: "Distance from Surface (nm)"}},
          yaxis: {range: [-25,300], rangemode: 'normal', title: {text: "Potential (mV)"}},
         shapes: [  {
@@ -88,10 +94,12 @@ const Graph = () => {
     
           }}]} }
       />
-      <div className='variable-display'>
-        <div>Psi0 = {Psi0}</div>
-        <div>C00 = {C00}</div>
+        <div className='variable-display'>
+          <div>Psi0 = {Psi0}</div>
+          <div>C00 = {C00}</div>
+        </div>
       </div>
+      
 
       <div>
         Set Psi0
@@ -104,16 +112,17 @@ const Graph = () => {
         Set C00
         <br></br>
       <input className='variable-counter' type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => handleC00Change(Number(event.target.value))} value={C00} step={stepC00} min='0' max='0.5'></input> |  
-      <input className='variable-slider' type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => handleC00Change(Number(event.target.value))} value={C00} min='-0.25' max='.750' step={stepC00}></input>
+      <input className='variable-slider' type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => handleC00Change(Number(event.target.value))} value={C00} min='0' max='.750' step={stepC00}></input>
+      {/* <input className='variable-slider' type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => handleC00Change(Number(event.target.value))} value={C00} min='-0.25' max='.750' step={stepC00}></input> */}
       {/*step={stepC00}  */}
       </div>
 
-      <div>
+      {/* <div>
         Test Slider
         <br></br>
       <input type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => handleSliderChange(Number(event.target.value))} value={testValue} step={testStep} min='0' max='10'></input> |  
       <input type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => handleSliderChange(Number(event.target.value))} value={testValue} min='0' max='10' step={testStep}></input>
-      </div>
+      </div> */}
       
     </div>
   )

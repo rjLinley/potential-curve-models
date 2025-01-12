@@ -73,13 +73,30 @@ button:focus-visible {
 
 }
 
+.graph-container {
+  display: flex;
+  flex-direction: row;
+  row-gap: 6px;
+}
+
 .variable-counter {
   min-width: 75px;
   max-width: 75px;
 }
 
 .variable-display {
-  position: absolute;
-  top: 7%;
-  right: 5%;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  
 }
+
+div.variable-display{
+  padding-left: 12px;
+  padding-top: 24px;
+  min-width: 125px;
+  
+
+}
+
