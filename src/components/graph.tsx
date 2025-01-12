@@ -88,7 +88,6 @@ const Graph = () => {
     
           }}]} }
       />
-      <div>HI RICHARD</div>
       <div className='variable-display'>
         <div>Psi0 = {Psi0}</div>
         <div>C00 = {C00}</div>
