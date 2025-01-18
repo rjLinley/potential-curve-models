@@ -20,8 +20,8 @@ const Graph = () => {
 
   // width: 760, height: 480,
 
-  const [testValue, setTestValue] = useState(1);
-  const [testStep, setTestStep] = useState(0.01)
+  // const [testValue, setTestValue] = useState(1);
+  // const [testStep, setTestStep] = useState(0.01)
 
 
   const linspace = (start: number, stop: number, num:number, endpoint: boolean = true):number[] => {
@@ -104,8 +104,8 @@ const Graph = () => {
       <div>
         Set Psi0
         <br></br>
-      <input type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setPsi0(Number(event.target.value))} value={Psi0} step='0.001' min='0' max='0.5'></input> |  
-      <input type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setPsi0(Number(event.target.value))} value={Psi0} min='0' max='.350' step='0.001'></input>
+      <input className='variable-counter' type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setPsi0(Number(event.target.value))} value={Psi0} step='0.001' min='0' max='0.5'></input> |  
+      <input className='variable-slider' type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setPsi0(Number(event.target.value))} value={Psi0} min='0' max='.350' step='0.001'></input>
       </div>
 
       <div>
