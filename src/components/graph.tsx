@@ -1,5 +1,7 @@
 import { ChangeEvent, useState, useEffect } from 'react';
 import Plot from 'react-plotly.js';
+import { ShapeLine, ShapeLabel, Layout, Label, Annotations } from 'plotly.js';
+import { isShorthandPropertyAssignment } from 'typescript';
 
 
 const Graph = () => {
@@ -67,7 +69,8 @@ const Graph = () => {
 
   return (
     <div>
-    <div className='graph-container'><Plot className='graph'
+    <div className='graph-container'>
+      <Plot className='graph'
         data={[
           {
             x: x,
@@ -81,35 +84,45 @@ const Graph = () => {
         layout={ {width: screen.width * .50, height: screen.height * .50, title: 'Guoy Chapman',
          xaxis: {range: [-1, 12], rangemode: "normal", title: {text: "Distance from Surface (nm)"}},
          yaxis: {range: [-25,300], rangemode: 'normal', title: {text: "Potential (mV)"}},
+         annotations: [{
+            text: `Surface potential in:<br></br>${C0.toFixed(1)} mmol/L NaCl<br></br>at ${T-273}\u00B0C in H<sub>2</sub>O`,
+            x: 9,
+            y: 205
+         }],
         shapes: [  {
           type: 'line',
           x0: Kinv*1E9,
           y0: 0,
           x1: Kinv*1E9,
           y1: 300,
+          label: {
+            text: 'Test Richard :)',
+            textangle: 0,
+            xanchor: 'left',
+            padding: 12
+          },
           line: {
             color: 'black',
             width: 1.5,
             dash: 'dash'
-    
           }}]} }
       />
-        <div className='variable-display'>
-          <div>Psi0 = {Psi0}</div>
-          <div>C00 = {C00}</div>
-        </div>
+        {/* <div className='variable-display'>
+          <div>{'\u03A8'}<sub>0</sub> = {Psi0}</div>
+          <div>C<sub>00</sub> = {C00}</div>
+        </div> */}
       </div>
       
 
       <div>
-        Set Psi0
+        Set {'\u03A8'}<sub>0</sub>
         <br></br>
       <input className='variable-counter' type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setPsi0(Number(event.target.value))} value={Psi0} step='0.001' min='0' max='0.5'></input> |  
       <input className='variable-slider' type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setPsi0(Number(event.target.value))} value={Psi0} min='0' max='.350' step='0.001'></input>
       </div>
 
       <div>
-        Set C00
+        Set C<sub>00</sub>
         <br></br>
       <input className='variable-counter' type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => handleC00Change(Number(event.target.value))} value={C00} step={stepC00} min='0' max='0.5'></input> |  
       <input className='variable-slider' type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => handleC00Change(Number(event.target.value))} value={C00} min='0' max='.750' step={stepC00}></input>
