@@ -1,10 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import Test from "./components/test";
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import './App.css'
-import Graph from "./components/graph";
+import './App.css';
+import Main from "./components/main";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -13,7 +9,7 @@ function App() {
 
     <Router>
       <Routes>
-        <Route path="/" element={<Graph />} />
+        <Route path="/" element={<Main />} />
       </Routes>
 
     </Router>

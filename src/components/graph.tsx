@@ -4,6 +4,7 @@ import { ShapeLine, ShapeLabel, Layout, Label, Annotations } from 'plotly.js';
 import { isShorthandPropertyAssignment } from 'typescript';
 
 
+
 const Graph = () => {
   const KB = 1.380649E-23
   const T = 298 //K

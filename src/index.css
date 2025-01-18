@@ -42,7 +42,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #822222;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -98,5 +98,35 @@ div.variable-display{
   min-width: 125px;
   
 
+}
+
+.grid-container{
+  width: auto;
+  height: auto;
+  display: grid;
+  grid-template-columns: 10% auto;
+}
+
+.side-bar{
+  background-color: orange;
+}
+
+.main-content{
+  background-color: grey;
+}
+
+.graph-menu{
+  padding: 0;
+}
+
+.graph-list-name{
+  list-style-type: none;
+  padding-bottom: 12px;
+  
+}
+
+.selected-model{
+  size: 100px;
+  background-color: blue;
 }
 
