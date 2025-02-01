@@ -6,7 +6,7 @@ interface HamburgerProps {
   setSelectedModel: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const graphNames = ["Guoy Chap", "Model 2", "Model 3", "Model 4"];
+const graphNames = ["Guoy Chapman", "Van Der Waals", "Ion Gradients"];
 
 const HamburgerMenu = (props: HamburgerProps) => {
   const {selectedModel, setSelectedModel} = props;
