@@ -15,7 +15,7 @@ const VanDerWaals = () => {
 
   // Fixed 
   const d = linspace(1E-10,1E-7,1001);
-  const T_K = T + 273.15;
+  // const T_K = T + 273.15;
   const kB = 1.38E-23 //J/K
 
   // #Calculate combined Hamaker constant
@@ -24,12 +24,6 @@ const VanDerWaals = () => {
   const x = d.map((item) => item * 1E9)
   const y = d.map((item) => (-A_C/(6*item)*(R1*R2)/(R1+R2))/(kB*T))
   
-  
-  
-  
-  
-  
-
   return (
     
   <div>
@@ -38,7 +32,7 @@ const VanDerWaals = () => {
       x: x,
       y: y,
       type: 'scatter',
-      marker: {color: 'red'},
+      marker: {color: 'teal'},
     }]}
     layout={{width: screen.width * .5, height: screen.height * .5, title: 'Van der Waals Attraction Between Two Spheres',
       xaxis: {range: [0,100], rangemode: "normal", title: {text: "Separation Distance (nm)"}},

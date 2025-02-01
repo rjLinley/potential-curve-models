@@ -17,8 +17,7 @@ const HamburgerMenu = (props: HamburgerProps) => {
   }
 
   const handleSelectModel = (name: string) => {
-    setSelectedModel(name)
-    console.log(name)
+    setSelectedModel(name)    
   }
 
   return (
