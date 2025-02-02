@@ -1,10 +1,6 @@
 import { ChangeEvent, useState, useEffect } from 'react';
 import Plot from 'react-plotly.js';
 import { linspace } from '../helperFunctions';
-import { ShapeLine, ShapeLabel, Layout, Label, Annotations } from 'plotly.js';
-import { isShorthandPropertyAssignment } from 'typescript';
-
-
 
 const GuoyChapman = () => {
   const KB = 1.380649E-23

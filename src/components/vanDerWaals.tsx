@@ -1,6 +1,6 @@
 import Plot from "react-plotly.js";
 import { linspace } from "../helperFunctions";
-import { ChangeEvent, useState, useEffect } from 'react';
+// import { ChangeEvent, useState, useEffect } from 'react';
 
 
 const VanDerWaals = () => {

@@ -1,5 +1,5 @@
 import Plot from "react-plotly.js";
-import { ChangeEvent, useState, useEffect } from "react";
+// import { ChangeEvent, useState, useEffect } from "react";
 import { linspace } from "../helperFunctions";
 
 const IonGradients = () => {
