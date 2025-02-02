@@ -1,4 +1,4 @@
-# double-layer-visualization
+# Potential Curve Models
 This repo contains code for a containerized react app that allows students to easily visualize the Guoy-Chapman Model
 
 `npm i`
