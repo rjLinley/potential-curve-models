@@ -1,5 +1,6 @@
 # Potential Curve Models
-This repo contains code for a containerized react app that allows students to easily visualize the Guoy-Chapman Model
+
+This repo is intended as a learning assistance tool for university students allowing for easy visualization and manipulation of various potential curve models
 
 `npm i`
 
