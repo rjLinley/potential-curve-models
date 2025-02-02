@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://.github.io/potential-curve-models",
+  "homepage": "http://rjlinley.github.io/potential-curve-models",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
