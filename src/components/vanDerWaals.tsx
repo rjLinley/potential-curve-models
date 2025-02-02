@@ -34,7 +34,7 @@ const VanDerWaals = () => {
       type: 'scatter',
       marker: {color: 'teal'},
     }]}
-    layout={{width: screen.width * .5, height: screen.height * .5, title: 'Van der Waals Attraction Between Two Spheres',
+    layout={{width: screen.width * .75, height: screen.height * .75, title: 'Van der Waals Attraction Between Two Spheres',
       xaxis: {range: [0,100], rangemode: "normal", title: {text: "Separation Distance (nm)"}},
       yaxis: {range: [-25,0], rangemode: "normal", title: {text: "V/kBT (-)"}},
       shapes: [{
