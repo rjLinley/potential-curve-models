@@ -9,7 +9,7 @@ function App() {
 
     <Router>
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/potential-curve-models/" element={<Main />} />
       </Routes>
 
     </Router>
