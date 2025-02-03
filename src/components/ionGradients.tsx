@@ -107,7 +107,7 @@ const IonGradients = () => {
 
         <div>
           Set Psi0
-          <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setPsi0(Number(event.target.value))} value={Psi0} step='0.0001' min='0.001' max='0.1'></input>
+          <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setPsi0(Number(event.target.value))} value={Psi0} step='0.0001' min='0.001' max='3.0'></input>
           <input className="variable-slider" type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setPsi0(Number(event.target.value))} value={Psi0} min='0.1' max='3.0' step='0.0001'></input>
         </div>
 
