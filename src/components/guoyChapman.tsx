@@ -64,7 +64,7 @@ const GuoyChapman = () => {
           },
           
         ]}
-        layout={ {width: screen.width * .75, height: screen.height * .75, title: 'Guoy Chapman Model',
+        layout={ {width: screen.width * .65, height: screen.height * .65, title: 'Guoy Chapman Model',
          xaxis: {range: [-1, 12], rangemode: "normal", title: {text: "Distance from Surface (nm)"}},
          yaxis: {range: [-25,300], rangemode: 'normal', title: {text: "Potential (mV)"}},
          annotations: [{

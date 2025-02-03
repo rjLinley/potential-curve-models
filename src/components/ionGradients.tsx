@@ -49,7 +49,7 @@ const IonGradients = () => {
             name: 'Anion Concentration'
 
           }]}
-          layout={{width: screen.width * .75, height: screen.height * .75, title: 'Ion Gradients at the EDL',
+          layout={{width: screen.width * .65, height: screen.height * .65, title: 'Ion Gradients at the EDL',
             xaxis: {range: [0,50], rangemode: "normal", title: {text: "Separation Distance (nm)"}},
             yaxis: {range: [0.0, 3.0], rangemode: "normal", title: {text: "Concentration (mmol/L)"}},
             shapes: [{
