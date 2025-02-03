@@ -9,7 +9,7 @@ import IonGradients from "./ionGradients";
 
 const Main = () => {
 
-  const [selectedModel, setSelectedModel] = useState('Guoy Chapman');
+  const [selectedModel, setSelectedModel] = useState('Ion Gradients');
 
   return (
     <div className="grid-container">

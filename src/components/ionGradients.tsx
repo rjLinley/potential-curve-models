@@ -1,13 +1,17 @@
 import Plot from "react-plotly.js";
 // import { ChangeEvent, useState, useEffect } from "react";
 import { linspace } from "../helperFunctions";
+import { ChangeEvent, useState } from "react";
 
 const IonGradients = () => {
 
   // #Adjustable Model Parameters
-  const C0 = 0.001 //mol/L (electrolyte concentration) Limits: 0.001 to 0.1 mol/L
-  const Psi0 = 0.1 //V (surface potential) Limits: 10 to 300 mV
-  const z = 1 //(charge of ion) Limits: 1, 2 (discrete values)
+  const [C0, setC0] = useState(0.001)
+  // const C0 = 0.001 //mol/L (electrolyte concentration) Limits: 0.001 to 0.1 mol/L
+  const [Psi0, setPsi0] = useState(0.1)
+  // const Psi0 = 0.1 //V (surface potential) Limits: 10 to 300 mV
+  const [z, setZ] = useState(1)
+  // const z = 1 //(charge of ion) Limits: 1, 2 (discrete values)
 
   // #Fixed Model Parameters
   const kB = 1.38E-23 //J/K
@@ -33,7 +37,7 @@ const IonGradients = () => {
 
   return (
     <div>
-      <div>
+      
         <div className="graph-container">
           <Plot className="graph" data={[{
             x: x,
@@ -55,9 +59,9 @@ const IonGradients = () => {
             shapes: [{
               type: 'line',
               x0: 0,
-              y0: 1.0,
+              y0: C0*1000,
               x1: 50,
-              y1: 1.0,
+              y1: C0*1000,
               label: {
                 text: 'C<sub>0</sub>',
                 textposition: "start",
@@ -72,9 +76,9 @@ const IonGradients = () => {
             },
             {
               type: 'line',
-              x0: 10,
+              x0: 1/K*1E9,
               y0: 0,
-              x1: 10,
+              x1: 1/K*1E9,
               y1: 3,
               label: {
                 text: '\u03bb<sub>D</sub>',
@@ -92,6 +96,28 @@ const IonGradients = () => {
             }]
            }}/>
         </div>
+      
+
+      <div className="variable-container">
+        <div>
+          Set C0
+          <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setC0(Number(event.target.value))} value={C0} step='0.00001' min='0.001' max='0.1'></input>
+          <input className="variable-slider" type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setC0(Number(event.target.value))} value={C0} min='0.001' max='0.1' step='0.00001'></input>
+        </div>
+
+        <div>
+          Set Psi0
+          <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setPsi0(Number(event.target.value))} value={Psi0} step='0.0001' min='0.001' max='0.1'></input>
+          <input className="variable-slider" type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setPsi0(Number(event.target.value))} value={Psi0} min='0.1' max='3.0' step='0.0001'></input>
+        </div>
+
+        <div>
+          Set z
+          <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setZ(Number(event.target.value))} value={z} step='1' min='1' max='2'></input>
+          <input className="variable-slider" type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setZ(Number(event.target.value))} value={z} min='1' max='2' step='1'></input>
+        </div>
+
+
       </div>
     </div>
   )

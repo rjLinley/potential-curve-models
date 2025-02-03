@@ -1,7 +1,7 @@
 import Plot from "react-plotly.js";
 import { linspace } from "../helperFunctions";
-import { ChangeEvent, useState, useEffect } from 'react';
-import { useAsyncError } from "react-router-dom";
+import { ChangeEvent, useState } from 'react';
+// import { useAsyncError } from "react-router-dom";
 
 
 const VanDerWaals = () => {
@@ -57,7 +57,7 @@ const VanDerWaals = () => {
       }]
      }}/>
    </div>
-
+   <div className="variable-container">
    <div>
     Set R1
     <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setR1(Number(event.target.value))} value={R1} step='0.0000001' min='0.0000005' max='0.00005'></input>
@@ -65,9 +65,34 @@ const VanDerWaals = () => {
    </div>
 
    <div>
+    Set R2
+    <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setR2(Number(event.target.value))} value={R2} step='0.0000001' min='0.0000005' max='0.00005'></input>
+    <input className="variable-slider" type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setR2(Number(event.target.value))} value={R2} min='0.0000005' max='0.00005' step='0.0000001'></input>
+   </div>
+
+   <div>
+    Set A1
+    <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setA1(Number(event.target.value))} value={A1} step='1E-20' min='3.5E-20' max='45E-20'></input>
+    <input className="variable-slider" type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setA1(Number(event.target.value))} value={A1} min='3.5E-20' max='45E-20' step='1E-20'></input>
+   </div>
+
+   <div>
+    Set A2
+    <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setA2(Number(event.target.value))} value={A2} step='1E-20' min='3.5E-20' max='45E-20'></input>
+    <input className="variable-slider" type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setA2(Number(event.target.value))} value={A2} min='3.5E-20' max='45E-20' step='1E-20'></input>
+   </div>
+
+   <div>
     Set T
     <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setT(Number(event.target.value))} value={T} step='1' min='0' max='100'></input>
     <input className="variable-slider" type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setT(Number(event.target.value))} value={T} min='0' max='100' step='1'></input>
+   </div>
+
+   <div>
+    Set A_S
+    <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setA_S(Number(event.target.value))} value={A_S} step='1E-20' min='3.5E-20' max='8E-20'></input>
+    <input className="variable-slider" type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setA_S(Number(event.target.value))} value={A_S} min='3.5E-20' max='8E-20' step='1E-21'></input>
+   </div>
    </div>
   </div>
 )
