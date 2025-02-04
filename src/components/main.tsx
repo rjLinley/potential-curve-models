@@ -11,14 +11,6 @@ const Main = () => {
 
   const [selectedModel, setSelectedModel] = useState('Guoy Chapman');
 
-  // let whomstToRender: any = () => {
-  //   if (selectedModel == "Guoy Chapman") {
-  //     return whomstToRender = <GuoyChapman/> 
-  //   }
-
-
-  // }
-    
   return (
     <div className="grid-container">
         <div className="side-bar">

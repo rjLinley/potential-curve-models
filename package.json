@@ -1,8 +1,9 @@
 {
-  "name": "double-layer-visualization",
+  "name": "potential-curve-models",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "http://rjlinley.github.io/potential-curve-models",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

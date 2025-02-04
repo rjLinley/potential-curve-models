@@ -1,17 +1,24 @@
 import Plot from "react-plotly.js";
 import { linspace } from "../helperFunctions";
-import { ChangeEvent, useState, useEffect } from 'react';
+import { ChangeEvent, useState } from 'react';
+// import { useAsyncError } from "react-router-dom";
 
 
 const VanDerWaals = () => {
 
   // Adjustable
-  const R1 = 5E-9 //m (radius of sphere 1) Limits (5E-7 to 5E-5 m)
-  const R2 = 5E-9 //m (radius of sphere 2) Limits (5E-7 to 5E-5 m)
-  const A1 = 43.5E-20 //J (Hamaker constant of sphere 1) Limits (3.5E-20 to 45E-20)
-  const A2 = 43.5E-20 //J (Hamaker constant of sphere 2) Limits (3.5E-20 to 45E-20)
-  const A_S = 4.35E-20 //J (Hamaker constant of solvent) Limits (3.5E-20 to 8E-20)
-  const T = 25 //degrees C (Temperature) Limits (0 to 100)
+  const [R1, setR1] = useState(5E-9)
+  // const R1 = 5E-9 //m (radius of sphere 1) Limits (5E-7 to 5E-5 m)
+  const [R2, setR2] = useState(5E-9)
+  // const R2 = 5E-9 //m (radius of sphere 2) Limits (5E-7 to 5E-5 m)
+  const [A1, setA1] = useState(43.5E-20)
+  // const A1 = 43.5E-20 //J (Hamaker constant of sphere 1) Limits (3.5E-20 to 45E-20)
+  const [A2, setA2] = useState(43.5E-20)
+  // const A2 = 43.5E-20 //J (Hamaker constant of sphere 2) Limits (3.5E-20 to 45E-20)
+  const [A_S, setA_S] = useState(4.35E-20)
+  // const A_S = 4.35E-20 //J (Hamaker constant of solvent) Limits (3.5E-20 to 8E-20)
+  const [T, setT] = useState(25)
+  // const T = 25 //degrees C (Temperature) Limits (0 to 100)
 
   // Fixed 
   const d = linspace(1E-10,1E-7,1001);
@@ -34,7 +41,7 @@ const VanDerWaals = () => {
       type: 'scatter',
       marker: {color: 'teal'},
     }]}
-    layout={{width: screen.width * .5, height: screen.height * .5, title: 'Van der Waals Attraction Between Two Spheres',
+    layout={{width: screen.width * .65, height: screen.height * .65, title: 'Van der Waals Attraction Between Two Spheres',
       xaxis: {range: [0,100], rangemode: "normal", title: {text: "Separation Distance (nm)"}},
       yaxis: {range: [-25,0], rangemode: "normal", title: {text: "V/kBT (-)"}},
       shapes: [{
@@ -49,6 +56,43 @@ const VanDerWaals = () => {
         }
       }]
      }}/>
+   </div>
+   <div className="variable-container">
+   <div>
+    Set R1
+    <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setR1(Number(event.target.value))} value={R1} step='0.0000001' min='0.0000005' max='0.00005'></input>
+    <input className="variable-slider" type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setR1(Number(event.target.value))} value={R1} min='0.0000005' max='0.00005' step='0.0000001'></input>
+   </div>
+
+   <div>
+    Set R2
+    <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setR2(Number(event.target.value))} value={R2} step='0.0000001' min='0.0000005' max='0.00005'></input>
+    <input className="variable-slider" type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setR2(Number(event.target.value))} value={R2} min='0.0000005' max='0.00005' step='0.0000001'></input>
+   </div>
+
+   <div>
+    Set A1
+    <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setA1(Number(event.target.value))} value={A1} step='1E-20' min='3.5E-20' max='45E-20'></input>
+    <input className="variable-slider" type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setA1(Number(event.target.value))} value={A1} min='3.5E-20' max='45E-20' step='1E-20'></input>
+   </div>
+
+   <div>
+    Set A2
+    <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setA2(Number(event.target.value))} value={A2} step='1E-20' min='3.5E-20' max='45E-20'></input>
+    <input className="variable-slider" type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setA2(Number(event.target.value))} value={A2} min='3.5E-20' max='45E-20' step='1E-20'></input>
+   </div>
+
+   <div>
+    Set T
+    <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setT(Number(event.target.value))} value={T} step='1' min='0' max='100'></input>
+    <input className="variable-slider" type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setT(Number(event.target.value))} value={T} min='0' max='100' step='1'></input>
+   </div>
+
+   <div>
+    Set A_S
+    <input className="variable-counter" type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => setA_S(Number(event.target.value))} value={A_S} step='1E-20' min='3.5E-20' max='8E-20'></input>
+    <input className="variable-slider" type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => setA_S(Number(event.target.value))} value={A_S} min='3.5E-20' max='8E-20' step='1E-21'></input>
+   </div>
    </div>
   </div>
 )

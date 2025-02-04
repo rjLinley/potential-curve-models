@@ -1,10 +1,6 @@
 import { ChangeEvent, useState, useEffect } from 'react';
 import Plot from 'react-plotly.js';
 import { linspace } from '../helperFunctions';
-import { ShapeLine, ShapeLabel, Layout, Label, Annotations } from 'plotly.js';
-import { isShorthandPropertyAssignment } from 'typescript';
-
-
 
 const GuoyChapman = () => {
   const KB = 1.380649E-23
@@ -68,7 +64,7 @@ const GuoyChapman = () => {
           },
           
         ]}
-        layout={ {width: screen.width * .50, height: screen.height * .50, title: 'Guoy Chapman Model',
+        layout={ {width: screen.width * .65, height: screen.height * .65, title: 'Guoy Chapman Model',
          xaxis: {range: [-1, 12], rangemode: "normal", title: {text: "Distance from Surface (nm)"}},
          yaxis: {range: [-25,300], rangemode: 'normal', title: {text: "Potential (mV)"}},
          annotations: [{
