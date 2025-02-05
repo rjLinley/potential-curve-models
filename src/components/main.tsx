@@ -1,36 +1,23 @@
-import HamburgerMenu from "./hamburgerMenu";
-import GuoyChapman from "./guoyChapman";
-import { useState } from "react";
-import VanDerWaals from "./vanDerWaals";
-import IonGradients from "./ionGradients";
+import GuoyChapman from "./GuoyChapman";
+import IonGradients from "./IonGradients";
+import VanDerWaals from "./VanDerWaals";
 
+type MainProps = {
+    selectedModel: string;
+    containerRef: null | HTMLDivElement;
+};
 
-
-
-const Main = () => {
-
-  const [selectedModel, setSelectedModel] = useState('Guoy Chapman');
-
-  return (
-    <div className="grid-container">
-        <div className="side-bar">
-            <HamburgerMenu selectedModel={selectedModel} setSelectedModel={setSelectedModel}/>
-        </div>
-
-      <div className="main-content">
-      {(() => {
-        switch (selectedModel) {
-          case "Guoy Chapman":   return <GuoyChapman/>;
-          case "Van Der Waals": return <VanDerWaals/>;
-          case "Ion Gradients":  return <IonGradients/>;
-          default:      return <GuoyChapman/>;
-        }
-      })()}
-    </div>
-  
-    
-    </div>
-  )
-}
+const Main = ({ selectedModel, containerRef }: MainProps) => {
+    switch (selectedModel) {
+        case "Guoy Chapman":
+            return <GuoyChapman containerRef={containerRef} />;
+        case "Van Der Waals":
+            return <VanDerWaals containerRef={containerRef} />;
+        case "Ion Gradients":
+            return <IonGradients containerRef={containerRef} />;
+        default:
+            return <GuoyChapman containerRef={containerRef} />;
+    }
+};
 
 export default Main;
