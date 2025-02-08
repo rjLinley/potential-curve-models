@@ -36,10 +36,6 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
 
     const x = base.map((item) => item * 1e9);
 
-    const handleC00LogChange = (value: number ) => {
-      setC00(value);
-    }
-
     const handleC00Change = (value: number) => {
         if (value < 0.08 && value > 0.00001) {
             setStepC00(0.0001);
@@ -162,15 +158,15 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
                     <input
                         className="variable-counter"
                         type="number"
-                        // onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                            // setC00(Number(event.target.value))
-                        // }
+                        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                            setC00(Number(event.target.value))
+                        }
                         value={C00}
                         step={0.00001}
                         min="0.00001"
                         max="0.5"
                     ></input>
-                    <LogarithmicRange onChange={(value: number) => handleC00LogChange(value)} defaultValue={0.1} minpos={0} maxpos={100} minval={0.0001} maxval={0.5}/>
+                    <LogarithmicRange primaryValue={C00} setPrimaryValue={setC00} minpos={0} maxpos={100} minval={0.0001} maxval={0.5}/>
                     <input
                         className="variable-slider"
                         type="range"
@@ -179,7 +175,7 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
                         }
                         value={C00}
                         min="0.00001"
-                        max=".750"
+                        max=".50"
                         step={stepC00}
                     ></input>
 
