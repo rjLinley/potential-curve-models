@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import Main from "./components/Main";
+import Graph from "./components/Graph";
 import Sidebar from "./components/Sidebar";
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
                     selectedModel={selectedModel}
                     setSelectedModel={setSelectedModel}
                 />
-                <Main
+                <Graph
                     selectedModel={selectedModel}
                     containerRef={containerRef}
                 />

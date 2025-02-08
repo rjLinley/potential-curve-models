@@ -6,6 +6,7 @@ import {
     widthAndHeightPropertyForGraph,
 } from "../helperFunctions";
 import { ModelProps } from "../types/generalTypes";
+import LogarithmicRange from "./LogarithmicRange";
 
 const GuoyChapman = ({ containerRef }: ModelProps) => {
     const KB = 1.380649e-23;
@@ -122,7 +123,7 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
             <div className="variables-container">
                 <div className="variable-group">
                     <div className="variable-title">
-                        Set C<sub>00</sub>
+                        Set {'\u03A8'}<sub>0</sub>
                     </div>
                     <input
                         className="variable-counter"
@@ -130,9 +131,9 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
                         onChange={(event: ChangeEvent<HTMLInputElement>) =>
                             setPsi0(Number(event.target.value))
                         }
-                        value={Psi0.toFixed(3)}
+                        value={Psi0}
                         step="0.001"
-                        min="0.00001"
+                        min="0.01"
                         max="0.5"
                     ></input>
                     <input
@@ -141,8 +142,8 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
                         onChange={(event: ChangeEvent<HTMLInputElement>) =>
                             setPsi0(Number(event.target.value))
                         }
-                        value={Psi0.toFixed(3)}
-                        min="0.00001"
+                        value={Psi0}
+                        min="0.01"
                         max=".350"
                         step="0.001"
                     ></input>
@@ -158,46 +159,31 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
                         onChange={(event: ChangeEvent<HTMLInputElement>) =>
                             handleC00Change(Number(event.target.value))
                         }
-                        value={C00.toFixed(4)}
-                        step={stepC00}
+                        value={C00}
+                        step={0.00001}
                         min="0.00001"
                         max="0.5"
                     ></input>
+                    <LogarithmicRange primaryValue={C00} setPrimaryValue={setC00} minpos={0} maxpos={100} minval={0.0001} maxval={0.5}/>
                     <input
                         className="variable-slider"
                         type="range"
                         onChange={(event: ChangeEvent<HTMLInputElement>) =>
                             handleC00Change(Number(event.target.value))
                         }
-                        value={C00.toFixed(4)}
+                        value={C00}
                         min="0.00001"
-                        max=".750"
+                        max=".50"
                         step={stepC00}
                     ></input>
 
-                    {/* <input className='variable-slider' type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => handleC00Change(Number(event.target.value))} value={C00} min='-0.25' max='.750' step={stepC00}></input> */}
-                    {/*step={stepC00}  */}
                 </div>
                 <button className="reset" onClick={() => handleReset()}>
                     Reset
                 </button>
-            </div>
-            {/* <div className='variable-display'>
-          <div>{'\u03A8'}<sub>0</sub> = {Psi0}</div>
-          <div>C<sub>00</sub> = {C00}</div>
-        </div> */}
+            </div>     
         </div>
     );
 };
 
 export default GuoyChapman;
-
-// SCRAP CODE //
-{
-    /* <div>
-        Test Slider
-        <br></br>
-      <input type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => handleSliderChange(Number(event.target.value))} value={testValue} step={testStep} min='0' max='10'></input> |
-      <input type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => handleSliderChange(Number(event.target.value))} value={testValue} min='0' max='10' step={testStep}></input>
-      </div> */
-}

@@ -22,7 +22,7 @@ const HamburgerMenu = (props: HamburgerProps) => {
     return (
         <div>
             <button onClick={() => handleMenuClick()}>
-                <img src="/hamburger-icon.svg" />
+                <img src="./hamburger-icon.svg" />
             </button>
             {open && (
                 <div>
