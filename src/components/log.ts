@@ -1,3 +1,10 @@
+type LogProps = {
+  minpos?: number,
+  maxpos?: number,
+  minval?: number,
+  maxval?: number,
+}
+
 class Log {
   minpos: number;
   maxpos: number;
@@ -5,7 +12,7 @@ class Log {
   maxval: number;
   scale: number;
 
-  constructor(opts) {
+  constructor(opts: LogProps) {
     this.minpos = opts.minpos || 0;
     this.maxpos = opts.maxpos || 100;
     this.minval = Math.log(opts.minval || 1);

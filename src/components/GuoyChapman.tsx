@@ -133,9 +133,9 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
                         onChange={(event: ChangeEvent<HTMLInputElement>) =>
                             setPsi0(Number(event.target.value))
                         }
-                        value={Psi0.toFixed(3)}
+                        value={Psi0}
                         step="0.001"
-                        min="0.00001"
+                        min="0.01"
                         max="0.5"
                     ></input>
                     <input
@@ -144,8 +144,8 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
                         onChange={(event: ChangeEvent<HTMLInputElement>) =>
                             setPsi0(Number(event.target.value))
                         }
-                        value={Psi0.toFixed(3)}
-                        min="0.00001"
+                        value={Psi0}
+                        min="0.01"
                         max=".350"
                         step="0.001"
                     ></input>
@@ -159,7 +159,7 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
                         className="variable-counter"
                         type="number"
                         onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                            setC00(Number(event.target.value))
+                            handleC00Change(Number(event.target.value))
                         }
                         value={C00}
                         step={0.00001}
