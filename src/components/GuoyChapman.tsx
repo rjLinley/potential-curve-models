@@ -54,8 +54,6 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
     };
 
     const handleReset = () => {
-        // TODO
-        // This needs to reset inside the logrange component
         setC00(0.1);
         setPsi0(0.15);
     };
@@ -179,29 +177,13 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
                         step={stepC00}
                     ></input>
 
-                    {/* <input className='variable-slider' type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => handleC00Change(Number(event.target.value))} value={C00} min='-0.25' max='.750' step={stepC00}></input> */}
-                    {/*step={stepC00}  */}
                 </div>
                 <button className="reset" onClick={() => handleReset()}>
                     Reset
                 </button>
-            </div>
-            {/* <div className='variable-display'>
-          <div>{'\u03A8'}<sub>0</sub> = {Psi0}</div>
-          <div>C<sub>00</sub> = {C00}</div>
-        </div> */}
+            </div>     
         </div>
     );
 };
 
 export default GuoyChapman;
-
-// SCRAP CODE //
-{
-    /* <div>
-        Test Slider
-        <br></br>
-      <input type='number' onChange={(event: ChangeEvent<HTMLInputElement>) => handleSliderChange(Number(event.target.value))} value={testValue} step={testStep} min='0' max='10'></input> |
-      <input type='range' onChange={(event: ChangeEvent<HTMLInputElement>) => handleSliderChange(Number(event.target.value))} value={testValue} min='0' max='10' step={testStep}></input>
-      </div> */
-}
