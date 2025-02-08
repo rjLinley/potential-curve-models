@@ -2,12 +2,12 @@ import GuoyChapman from "./GuoyChapman";
 import IonGradients from "./IonGradients";
 import VanDerWaals from "./VanDerWaals";
 
-type MainProps = {
+type GraphProps = {
     selectedModel: string;
     containerRef: null | HTMLDivElement;
 };
 
-const Main = ({ selectedModel, containerRef }: MainProps) => {
+const Graph = ({ selectedModel, containerRef }: GraphProps) => {
     switch (selectedModel) {
         case "Guoy Chapman":
             return <GuoyChapman containerRef={containerRef} />;
@@ -20,4 +20,4 @@ const Main = ({ selectedModel, containerRef }: MainProps) => {
     }
 };
 
-export default Main;
+export default Graph;

@@ -6,6 +6,7 @@ import {
     widthAndHeightPropertyForGraph,
 } from "../helperFunctions";
 import { ModelProps } from "../types/generalTypes";
+import LogarithmicRange from "./LogarithmicRange";
 
 const GuoyChapman = ({ containerRef }: ModelProps) => {
     const KB = 1.380649e-23;
@@ -35,6 +36,10 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
 
     const x = base.map((item) => item * 1e9);
 
+    const handleC00LogChange = (value: number ) => {
+      setC00(value);
+    }
+
     const handleC00Change = (value: number) => {
         if (value < 0.08 && value > 0.00001) {
             setStepC00(0.0001);
@@ -53,6 +58,8 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
     };
 
     const handleReset = () => {
+        // TODO
+        // This needs to reset inside the logrange component
         setC00(0.1);
         setPsi0(0.15);
     };
@@ -122,7 +129,7 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
             <div className="variables-container">
                 <div className="variable-group">
                     <div className="variable-title">
-                        Set C<sub>00</sub>
+                        Set {'\u03A8'}<sub>0</sub>
                     </div>
                     <input
                         className="variable-counter"
@@ -155,21 +162,22 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
                     <input
                         className="variable-counter"
                         type="number"
-                        onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                            handleC00Change(Number(event.target.value))
-                        }
-                        value={C00.toFixed(4)}
-                        step={stepC00}
+                        // onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                            // setC00(Number(event.target.value))
+                        // }
+                        value={C00}
+                        step={0.00001}
                         min="0.00001"
                         max="0.5"
                     ></input>
+                    <LogarithmicRange onChange={(value: number) => handleC00LogChange(value)} defaultValue={0.1} minpos={0} maxpos={100} minval={0.0001} maxval={0.5}/>
                     <input
                         className="variable-slider"
                         type="range"
                         onChange={(event: ChangeEvent<HTMLInputElement>) =>
                             handleC00Change(Number(event.target.value))
                         }
-                        value={C00.toFixed(4)}
+                        value={C00}
                         min="0.00001"
                         max=".750"
                         step={stepC00}
