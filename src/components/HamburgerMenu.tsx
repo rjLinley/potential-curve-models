@@ -1,4 +1,5 @@
 import { useState } from "react";
+import hamburgerMenu from "../assets/hamburger-icon.svg"
 
 interface HamburgerProps {
     selectedModel: string;
@@ -22,7 +23,7 @@ const HamburgerMenu = (props: HamburgerProps) => {
     return (
         <div>
             <button onClick={() => handleMenuClick()}>
-                <img src="./hamburger-icon.svg" />
+                <img src={hamburgerMenu} />
             </button>
             {open && (
                 <div>
