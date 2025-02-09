@@ -164,7 +164,7 @@ const GuoyChapman = ({ containerRef }: ModelProps) => {
                         min="0.00001"
                         max="0.5"
                     ></input>
-                    <LogarithmicRange primaryValue={C00} setPrimaryValue={setC00} minpos={0} maxpos={100} minval={0.0001} maxval={0.5}/>
+                    <LogarithmicRange primaryValue={C00} setPrimaryValue={setC00} minpos={0} maxpos={100} minval={0.0001} maxval={0.5} fixedPlaces={5}/>
                     <input
                         className="variable-slider"
                         type="range"

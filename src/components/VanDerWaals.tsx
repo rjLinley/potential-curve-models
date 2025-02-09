@@ -6,7 +6,8 @@ import {
 } from "../helperFunctions";
 import { ChangeEvent, useState } from "react";
 import { ModelProps } from "../types/generalTypes";
-// import { useAsyncError } from "react-router-dom";
+import LogarithmicRange from "./LogarithmicRange";
+
 
 const VanDerWaals = ({ containerRef }: ModelProps) => {
     // Adjustable
@@ -61,7 +62,7 @@ const VanDerWaals = ({ containerRef }: ModelProps) => {
                         title: { text: "Separation Distance (nm)" },
                     },
                     yaxis: {
-                        range: [-25, 0],
+                        range: [-25, 25],
                         rangemode: "normal",
                         title: { text: "V/kBT (-)" },
                     },
@@ -90,10 +91,11 @@ const VanDerWaals = ({ containerRef }: ModelProps) => {
                             setR1(Number(event.target.value))
                         }
                         value={R1}
-                        step="0.0000001"
-                        min="0.0000005"
-                        max="0.00005"
+                        step="1E-10"
+                        min="5E-9"
+                        max="5E-8"
                     ></input>
+                    <LogarithmicRange primaryValue={R1} setPrimaryValue={setR1} minpos={0} maxpos={100} minval={5E-9} maxval={5E-8} fixedPlaces={10}/>
                     <input
                         className="variable-slider"
                         type="range"
@@ -101,9 +103,9 @@ const VanDerWaals = ({ containerRef }: ModelProps) => {
                             setR1(Number(event.target.value))
                         }
                         value={R1}
-                        min="0.0000005"
-                        max="0.00005"
-                        step="0.0000001"
+                        min="5E-9"
+                        max="5E-8"
+                        step="1E-10"
                     ></input>
                 </div>
 
@@ -116,10 +118,11 @@ const VanDerWaals = ({ containerRef }: ModelProps) => {
                             setR2(Number(event.target.value))
                         }
                         value={R2}
-                        step="0.0000001"
-                        min="0.0000005"
-                        max="0.00005"
+                        step="1E-10"
+                        min="5E-9"
+                        max="5E-8"
                     ></input>
+                    <LogarithmicRange primaryValue={R2} setPrimaryValue={setR2} minpos={0} maxpos={100} minval={5E-9} maxval={5E-8} fixedPlaces={10}/>
                     <input
                         className="variable-slider"
                         type="range"
@@ -127,9 +130,9 @@ const VanDerWaals = ({ containerRef }: ModelProps) => {
                             setR2(Number(event.target.value))
                         }
                         value={R2}
-                        min="0.0000005"
-                        max="0.00005"
-                        step="0.0000001"
+                        step="1E-10"
+                        min="5E-9"
+                        max="5E-8"
                     ></input>
                 </div>
                 <div className="variable-group">

@@ -4,7 +4,7 @@ import Graph from "./components/Graph";
 import Sidebar from "./components/Sidebar";
 
 function App() {
-    const [selectedModel, setSelectedModel] = useState("Guoy Chapman");
+    const [selectedModel, setSelectedModel] = useState("Van Der Waals");
     const [containerRef, setContainerRef] = useState<null | HTMLDivElement>(
         null
     );

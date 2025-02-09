@@ -7,10 +7,11 @@ type LogarithmicRangeProps = {
   minpos: number,
   maxpos: number,
   minval: number,
-  maxval: number
+  maxval: number,
+  fixedPlaces: number
 }
 
-const LogarithmicRange = ({ primaryValue, setPrimaryValue, minpos, maxpos, minval, maxval}: LogarithmicRangeProps) => {  
+const LogarithmicRange = ({ primaryValue, setPrimaryValue, minpos, maxpos, minval, maxval, fixedPlaces}: LogarithmicRangeProps) => {  
   const log = new Log({
     minpos,
     maxpos,
@@ -22,7 +23,7 @@ const LogarithmicRange = ({ primaryValue, setPrimaryValue, minpos, maxpos, minva
     if (position === 0) return minval
     const value = log.value(position)
 
-    return Number(value.toFixed(5))
+    return Number(value.toFixed(fixedPlaces))
   }
 
   return <input type='range' min={minpos} max={maxpos} value={log.position(primaryValue)} onChange={(event: ChangeEvent<HTMLInputElement>) => setPrimaryValue(calculateValue(Number(event.target.value)))}></input>
