@@ -7,10 +7,11 @@ import {
 } from "../helperFunctions";
 import { ChangeEvent, useState } from "react";
 import { ModelProps } from "../types/generalTypes";
+import LogarithmicRange from "./LogarithmicRange";
 
 const IonGradients = ({ containerRef }: ModelProps) => {
     // #Adjustable Model Parameters
-    const [C0, setC0] = useState(0.001);
+    const [C0, setC0] = useState(0.01);
     // const C0 = 0.001 //mol/L (electrolyte concentration) Limits: 0.001 to 0.1 mol/L
     const [Psi0, setPsi0] = useState(0.1);
     // const Psi0 = 0.1 //V (surface potential) Limits: 10 to 300 mV
@@ -68,6 +69,12 @@ const IonGradients = ({ containerRef }: ModelProps) => {
 
     document.title = "Ion Gradients";
 
+    const handleReset = () => {
+        setC0(0.01)
+        setPsi0(0.1)
+        setZ(1)
+    }
+
     return (
         <div className="graph-container">
             <Plot
@@ -93,12 +100,12 @@ const IonGradients = ({ containerRef }: ModelProps) => {
                     ...widthAndHeightPropertyForGraph(containerRef),
                     title: "Ion Gradients at the EDL",
                     xaxis: {
-                        range: [0, 50],
+                        range: [0, 15],
                         rangemode: "normal",
                         title: { text: "Separation Distance (nm)" },
                     },
                     yaxis: {
-                        range: [0.0, 3.0],
+                        range: [0.0, 200],
                         rangemode: "normal",
                         title: { text: "Concentration (mmol/L)" },
                     },
@@ -126,7 +133,7 @@ const IonGradients = ({ containerRef }: ModelProps) => {
                             x0: (1 / K) * 1e9,
                             y0: 0,
                             x1: (1 / K) * 1e9,
-                            y1: 3,
+                            y1: 200,
                             label: {
                                 text: "\u03bb<sub>D</sub>",
                                 textangle: 0,
@@ -153,10 +160,11 @@ const IonGradients = ({ containerRef }: ModelProps) => {
                             setC0(Number(event.target.value))
                         }
                         value={C0}
-                        step="0.00001"
-                        min="0.001"
+                        step="0.0001"
+                        min="0.01"
                         max="0.1"
                     ></input>
+                     <LogarithmicRange primaryValue={C0} setPrimaryValue={setC0} minpos={0} maxpos={100} minval={0.01} maxval={0.1} fixedPlaces={3}/>
                     <input
                         className="variable-slider"
                         type="range"
@@ -164,9 +172,9 @@ const IonGradients = ({ containerRef }: ModelProps) => {
                             setC0(Number(event.target.value))
                         }
                         value={C0}
-                        min="0.001"
+                        min="0.01"
                         max="0.1"
-                        step="0.00001"
+                        step="0.0001"
                     ></input>
                 </div>
 
@@ -179,9 +187,9 @@ const IonGradients = ({ containerRef }: ModelProps) => {
                             setPsi0(Number(event.target.value))
                         }
                         value={Psi0}
-                        step="0.0001"
+                        step="0.001"
                         min="0.001"
-                        max="3.0"
+                        max="0.1"
                     ></input>
                     <input
                         className="variable-slider"
@@ -190,9 +198,9 @@ const IonGradients = ({ containerRef }: ModelProps) => {
                             setPsi0(Number(event.target.value))
                         }
                         value={Psi0}
-                        min="0.1"
-                        max="3.0"
-                        step="0.0001"
+                        min="0.001"
+                        max="0.1"
+                        step="0.001"
                     ></input>
                 </div>
 
@@ -221,6 +229,9 @@ const IonGradients = ({ containerRef }: ModelProps) => {
                         step="1"
                     ></input>
                 </div>
+                    <button className="reset" onClick={() => handleReset()}>
+                    Reset
+                    </button>
             </div>
         </div>
     );
