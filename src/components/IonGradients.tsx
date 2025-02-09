@@ -69,6 +69,12 @@ const IonGradients = ({ containerRef }: ModelProps) => {
 
     document.title = "Ion Gradients";
 
+    const handleReset = () => {
+        setC0(0.01)
+        setPsi0(0.1)
+        setZ(1)
+    }
+
     return (
         <div className="graph-container">
             <Plot
@@ -94,7 +100,7 @@ const IonGradients = ({ containerRef }: ModelProps) => {
                     ...widthAndHeightPropertyForGraph(containerRef),
                     title: "Ion Gradients at the EDL",
                     xaxis: {
-                        range: [0, 50],
+                        range: [0, 15],
                         rangemode: "normal",
                         title: { text: "Separation Distance (nm)" },
                     },
@@ -223,6 +229,9 @@ const IonGradients = ({ containerRef }: ModelProps) => {
                         step="1"
                     ></input>
                 </div>
+                    <button className="reset" onClick={() => handleReset()}>
+                    Reset
+                    </button>
             </div>
         </div>
     );

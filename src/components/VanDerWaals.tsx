@@ -40,6 +40,15 @@ const VanDerWaals = ({ containerRef }: ModelProps) => {
 
     document.title = "Van Der Waals";
 
+    const handleReset = () => {
+        setR1(5e-9)
+        setR2(5e-9)
+        setA1(43.5e-20)
+        setA2(43.5e-20)
+        setA_S(4.35e-20)
+        setT(25)
+    }
+
     return (
         <div className="graph-container">
             <Plot
@@ -239,7 +248,12 @@ const VanDerWaals = ({ containerRef }: ModelProps) => {
                         step="1E-21"
                     ></input>
                 </div>
-            </div>
+                <div>
+                    <button className="reset" onClick={() => handleReset()}>
+                        Reset
+                    </button>
+                </div>
+            </div>            
         </div>
     );
 };
