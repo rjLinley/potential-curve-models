@@ -1,3 +1,4 @@
+import DLVO from "./DLVO";
 import GuoyChapman from "./GuoyChapman";
 import IonGradients from "./IonGradients";
 import VanDerWaals from "./VanDerWaals";
@@ -15,6 +16,8 @@ const Graph = ({ selectedModel, containerRef }: GraphProps) => {
             return <VanDerWaals containerRef={containerRef} />;
         case "Ion Gradients":
             return <IonGradients containerRef={containerRef} />;
+        case "DLVO":
+            return <DLVO containerRef={containerRef} />
         default:
             return <GuoyChapman containerRef={containerRef} />;
     }
