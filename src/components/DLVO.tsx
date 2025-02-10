@@ -105,7 +105,7 @@ const DLVO = ({ containerRef }: ModelProps) => {
             title: {text: "Separation Distance (nm)"}
           },
           yaxis: {
-            range: [-30, 60],
+            range: [-60, 60],
             rangemode: 'normal',
             title: {text: 'V/kBT (-)'}
           },
@@ -137,9 +137,9 @@ const DLVO = ({ containerRef }: ModelProps) => {
             {
               type: 'line',
               x0: 0,
-              y0: -30,
+              y0: -60,
               x1: 30,
-              y1: -30,
+              y1: -60,
               line: {
                 color: 'black',
                 width: 1.5
