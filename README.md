@@ -4,6 +4,6 @@ This repo compiles a static application hosted on GitHub Page. It allows univers
 
 `npm i`
 
-#Local Testing
+## Local Testing
 
 `npm run dev`
